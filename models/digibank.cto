@@ -13,26 +13,21 @@
  */
 
 /**
- * Class definition for all assets
+ * Write your model definitions here
  */
 
 namespace digibank
 
-// Account asset identified with accountId, account is linked with customer owning the account
 asset Account identified by accountId {
 o String accountId
 --> Customer owner
 o Double balance
 }
-
-// customer participant identified with customerId
-participant participantName identified by customerId {
+participant Customer identified by customerId {
 o String customerId
 o String firstName
 o String lastName
 }
-
-// transaction to occure from an account
 transaction AccountTransfer {
 --> Account from
 --> Account to
