@@ -13,30 +13,28 @@
  */
 
 /**
- * Write your model definitions here
+ * Class definition for all assets
  */
 
 namespace digibank
 
-participant SampleParticipant identified by participantId {
-  o String participantId
-  o String firstName
-  o String lastName
+// Account asset identified with accountId, account is linked with customer owning the account
+asset Account identified by accountId {
+o String accountId
+--> Customer owner
+o Double balance
 }
 
-asset SampleAsset identified by assetId {
-  o String assetId
-  --> SampleParticipant owner
-  o String value
+// customer participant identified with customerId
+participant participantName identified by customerId {
+o String customerId
+o String firstName
+o String lastName
 }
 
-transaction SampleTransaction {
-  --> SampleAsset asset
-  o String newValue
-}
-
-event SampleEvent {
-  --> SampleAsset asset
-  o String oldValue
-  o String newValue
+// transaction to occure from an account
+transaction AccountTransfer {
+--> Account from
+--> Account to
+o Double amount
 }
